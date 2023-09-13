@@ -2,6 +2,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        CaptchaCreator cc = new CaptchaCreator();
+        cc.Test();
+
         int ans = (int)(Math.random() * 11 + 1);
 
         int num;
