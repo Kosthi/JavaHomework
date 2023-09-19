@@ -11,15 +11,18 @@ import org.apache.commons.lang3.RandomStringUtils;
 import javax.imageio.ImageIO;
 
 public class CaptchaCreator {
+    // 随机含字母数字的4位验证码
     public String getText() {
         return RandomStringUtils.randomAlphanumeric(4);
     }
 
+    // 随机含字母数字的4-6位验证码
     public String getExtendedText() {
         Random random = new Random();
         return RandomStringUtils.randomAlphanumeric(random.nextInt(3) + 4);
     }
 
+    // 随机含特定数量的字母和数字的4-6位验证码
     public String getExtendedText(int numLetters, int numDigits) {
         if (numLetters + numDigits < 4 || numLetters + numDigits > 6) {
             throw new IllegalArgumentException("The total length of letters and digits combined must be between 4 and 6.");
@@ -45,6 +48,7 @@ public class CaptchaCreator {
         return new String(charArray);
     }
 
+    // 生成验证码文本对应的图片
     public void getPhoto(String captchaText) {
         DefaultKaptcha kaptchaProducer = new DefaultKaptcha();
         Properties properties = new Properties();
@@ -54,6 +58,7 @@ public class CaptchaCreator {
         properties.put("kaptcha.textproducer.font.color", "38,29,12");
         // properties.put("kaptcha.image.width", "125");
 
+        // 根据文本自适应图片宽度
         properties.put("kaptcha.image.width", String.valueOf(150 * captchaText.length() / 4));
 
         properties.put("kaptcha.image.height", "45");
@@ -63,20 +68,21 @@ public class CaptchaCreator {
 
         // Generate the captcha text
         // String captchaText = kaptchaProducer.createText();
-        System.out.println("Generated Captcha Text = " + captchaText);
+        // System.out.println("Generated Captcha Text = " + captchaText);
 
         // Create the captcha image
         BufferedImage image = kaptchaProducer.createImage(captchaText);
 
         // Save the image to a file
         try {
-            ImageIO.write(image, "jpg", new File("captcha.jpg"));
+            ImageIO.write(image, "jpg", new File(captchaText + "captcha.jpg"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
 
+    // 同时生成验证码文本和其对应的图片
     public void getTextAndPhoto() {
         DefaultKaptcha kaptchaProducer = new DefaultKaptcha();
         Properties properties = new Properties();
@@ -101,7 +107,7 @@ public class CaptchaCreator {
 
         // Save the image to a file
         try {
-            ImageIO.write(image, "jpg", new File("captcha.jpg"));
+            ImageIO.write(image, "jpg", new File(captchaText + "captcha.jpg"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -110,7 +116,7 @@ public class CaptchaCreator {
 
     private static final String[] CNUMBERS = "0,1,2,3,4,5,6,7,8,9,10".split(",");
 
-    // 智力题验证码
+    // 智力题验证码 加减乘除
     public String getCalText() {
         SecureRandom random = new SecureRandom();
         int x = random.nextInt(10);
@@ -149,7 +155,7 @@ public class CaptchaCreator {
         return suChinese.toString();
     }
 
-    // 选择题验证码
+    // 问答题验证码 HashMap存储问题和答案
     public String getChoiceText() {
         ChoiceCaptcha choiceCaptcha = new ChoiceCaptcha();
         return choiceCaptcha.getRandomQuestion();
@@ -181,25 +187,37 @@ public class CaptchaCreator {
     public void Test() {
         CaptchaCreator cc = new CaptchaCreator();
         // 基本测试
+        System.out.println("测试生成4位验证码");
         System.out.println(cc.getText());
+        System.out.println("测试生成4-6位验证码");
         System.out.println(cc.getExtendedText());
+
+        System.out.println("测试生成2位字母和3位数字验证码");
         System.out.println(cc.getExtendedText(2, 3));
+        System.out.println("测试生成验证码图片");
         cc.getPhoto(cc.getExtendedText());
+        System.out.println("测试生成验证码和验证码图片");
         cc.getTextAndPhoto();
 
         // 测试智力验证码
+        System.out.println("测试智力题验证码");
         String calText = cc.getCalText();
-        System.out.println(calText);
+        System.out.println("智力题验证码：" + calText);
+        System.out.println("测试生成智力题验证码图片");
         cc.getPhoto(calText);
 
-        // 测试选择题验证码
+        // 测试问答题验证码
+        System.out.println("测试智力题验证码");
         String choiceText = cc.getChoiceText();
-        System.out.println(choiceText);
+        System.out.println("问答题验证码：" + choiceText);
+        System.out.println("测试问答题验证码图片");
         cc.getPhoto(choiceText);
 
         // 测试中文验证码
+        System.out.println("测试中文验证码");
         String chineseText = cc.getChineseText();
-        System.out.println(chineseText);
+        System.out.println("中文验证码：" + chineseText);
+        System.out.println("测试中文验证码图片");
         cc.getPhoto(chineseText);
     }
 }
@@ -214,7 +232,9 @@ class ChoiceCaptcha {
     }
 
     public String getRandomQuestion() {
+        // 转化成数组类型
         Object[] questions = questionBank.keySet().toArray();
+        // 随机生成下标的数组
         return (String) questions[new Random().nextInt(questions.length)];
     }
 

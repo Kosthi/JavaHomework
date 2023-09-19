@@ -7,6 +7,7 @@
     <list default="true" id="f361cadb-9fab-4123-99de-89f66acfdc7a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/captcha.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/captcha.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CaptchaCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CaptchaCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,6 +66,12 @@
       <workItem from="1694589824229" duration="280000" />
       <workItem from="1694590454713" duration="7896000" />
       <workItem from="1694599468059" duration="345000" />
+      <workItem from="1694599909322" duration="4000" />
+      <workItem from="1694767800461" duration="170000" />
+      <workItem from="1694863756853" duration="595000" />
+      <workItem from="1694937157523" duration="867000" />
+      <workItem from="1694950593681" duration="2500000" />
+      <workItem from="1694961133716" duration="557000" />
     </task>
     <servers />
   </component>
