@@ -17,7 +17,7 @@ public class MyPrinter {
         return myPrinter;
     }
 
-    public void print(Object obj) {
+    public static void print(Object obj) {
         System.out.println("****** " + myPrinterName + " ******");
         System.out.println(obj.toString());
     }

@@ -21,6 +21,7 @@ public class Main {
 
         // String为引用对象，浅拷贝中为true，深拷贝中为false
         System.out.println(myLogger.getMsg() == myLoggerCloned.getMsg());
+        System.out.println(myLogger.getLogTime() == myLoggerCloned.getLogTime());
         System.out.println(myLogger.getMsg().equals(myLoggerCloned.getMsg()));
     }
 }
