@@ -21,6 +21,10 @@ public class MyLogger implements Cloneable {
         return formatTime.format(logTime_);
     }
 
+    public Date getLogTimeObj() {
+        return logTime_;
+    }
+
     public String getMsg() {
         return msg_;
     }
@@ -45,11 +49,12 @@ public class MyLogger implements Cloneable {
     public MyLogger clone() {
         try {
             // 深拷贝 TODO: copy mutable state here, so the clone can't change the internals of the original
-//            MyLogger clone = (MyLogger) super.clone();
-//            clone.msg_ = new String(msg_);
-//            return clone;
+            MyLogger clone = (MyLogger) super.clone();
+            clone.msg_ = new String(msg_);
+            clone.logTime_ = (Date) logTime_.clone();
+            return clone;
             // 浅拷贝
-            return (MyLogger) super.clone();
+            // return (MyLogger) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }

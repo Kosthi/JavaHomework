@@ -19,9 +19,10 @@ public class Main {
         p1.print(myLogger);
         p1.print(myLoggerCloned);
 
-        // String为引用对象，浅拷贝中为true，深拷贝中为false
+        // String 为引用对象，浅拷贝中为true，深拷贝中为false
+        // Date 为引用对象，浅拷贝中为true，深拷贝中为false
         System.out.println(myLogger.getMsg() == myLoggerCloned.getMsg());
-        System.out.println(myLogger.getLogTime() == myLoggerCloned.getLogTime());
+        System.out.println(myLogger.getLogTimeObj() == myLoggerCloned.getLogTimeObj());
         System.out.println(myLogger.getMsg().equals(myLoggerCloned.getMsg()));
     }
 }

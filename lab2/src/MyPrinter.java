@@ -1,7 +1,6 @@
 // 懒汉式单例类，在类初始时，已自行实例化
 public class MyPrinter {
-    private MyPrinter() {
-    }
+    private MyPrinter() {}
 
     private static MyPrinter myPrinter = null;
     private static String myPrinterName;
