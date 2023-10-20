@@ -1,6 +1,8 @@
 package remote;
 
-public class TvRemoter implements TvRemote {
+public class TvRemoter extends Remoter implements TvRemote {
+    private int volume = 20; // 默认音量
+
     @Override
     public void turnOn() {
         System.out.println("TV is turned on.");
@@ -13,11 +15,13 @@ public class TvRemoter implements TvRemote {
 
     @Override
     public void volumeUp() {
+        ++volume;
         System.out.println("TV volume is up.");
     }
 
     @Override
     public void volumeDown() {
+        --volume;
         System.out.println("TV volume is down.");
     }
 

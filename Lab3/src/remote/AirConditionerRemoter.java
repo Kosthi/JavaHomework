@@ -1,6 +1,6 @@
 package remote;
 
-public class AirConditionerRemoter implements AirConditionerRemote {
+public class AirConditionerRemoter extends Remoter implements AirConditionerRemote {
     private int temperature = 25; // 默认温度
     private String mode = "auto"; // 默认模式
 

@@ -43,6 +43,8 @@ public class Tester {
             CdPlayerRemoter cdPlayerRemoter = new CdPlayerRemoter();
             cdPlayerRemoter.turnOn();
             cdPlayerRemoter.turnOff();
+            cdPlayerRemoter.volumeUp();
+            cdPlayerRemoter.volumeDown();
             cdPlayerRemoter.play();
             cdPlayerRemoter.pause();
             cdPlayerRemoter.previousTrack();

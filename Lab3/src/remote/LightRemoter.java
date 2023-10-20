@@ -1,6 +1,8 @@
 package remote;
 
-public class LightRemoter implements LightRemote {
+public class LightRemoter extends Remoter implements LightRemote {
+    private int luminance = 25; // 默认亮度
+
     @Override
     public void turnOn() {
         System.out.println("Light is turned on.");
@@ -13,11 +15,13 @@ public class LightRemoter implements LightRemote {
 
     @Override
     public void dimUp() {
+        ++luminance;
         System.out.println("Light is dimming up.");
     }
 
     @Override
     public void dimDown() {
+        --luminance;
         System.out.println("Light is dimming down.");
     }
 }

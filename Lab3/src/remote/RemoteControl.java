@@ -1,11 +1,6 @@
 package remote;
 
-public interface RemoteControl {
-    void turnOn();
-    void turnOff();
-}
-
-interface TvRemote extends RemoteControl {
+interface TvRemote {
     void volumeUp();
 
     void volumeDown();
@@ -15,20 +10,30 @@ interface TvRemote extends RemoteControl {
     void channelDown();
 }
 
-interface LightRemote extends RemoteControl {
+interface LightRemote {
     void dimUp();
+
     void dimDown();
 }
 
-interface CdPlayerRemote extends RemoteControl {
+interface CdPlayerRemote {
     void play();
+
     void pause();
+
+    void volumeUp();
+
+    void volumeDown();
+
     void nextTrack();
+
     void previousTrack();
 }
 
-interface AirConditionerRemote extends RemoteControl {
+interface AirConditionerRemote {
     void temperatureUp();
+
     void temperatureDown();
+
     void setMode(String mode);
 }
