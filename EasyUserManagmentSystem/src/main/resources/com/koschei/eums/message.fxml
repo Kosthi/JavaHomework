@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.koschei.eums.controller.MessageController">
+    <top>
+        <MenuBar>
+            <Menu text="文件">
+                <MenuItem text="保存" onAction="#saveMessage"/>
+                <MenuItem text="关闭" onAction="#closeMessage"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    <center>
+        <TextArea fx:id="messageTextArea" wrapText="true"/>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER">
+            <Button text="返回" onAction="#closeMessage"/>
+        </HBox>
+    </bottom>
+</BorderPane>
