@@ -30,7 +30,9 @@ public class LoginController implements Initializable {
     private TextField username;
     @FXML
     private PasswordField password;
-    private List<User> userList; // Store user information here
+    public static List<User> userList; // Store user information here
+
+    public static User currentUser;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,6 +50,21 @@ public class LoginController implements Initializable {
             }
 
             if (showConfirmationDialog()) {
+
+                for (User user : userList) {
+                    if (user.getName().equals(username.getText())) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+                        DialogPane dialogPane = alert.getDialogPane();
+                        dialogPane.setStyle("-fx-font-family: 'Times New Roman'; -fx-font-size: 14px;");
+
+                        alert.setTitle("注册");
+                        alert.setHeaderText(null);  // 如果不需要头部文本，设置为null
+                        alert.setContentText("用户已经注册！");
+                        alert.showAndWait();
+                        return;
+                    }
+                }
 
                 User user = new User(username.getText(), password.getText());
                 try {
@@ -123,6 +140,8 @@ public class LoginController implements Initializable {
                 System.out.println("密码错误: " + password.getText());
                 return;
             }
+
+            currentUser = user;
 
             // 创建信息对话框
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -20,7 +20,7 @@ public class EUMSApplication extends Application {
         LoginController loginController = fxmlLoader.getController();
         loginController.setStage(stage);
 
-        stage.setTitle("登陆!");
+        stage.setTitle("登陆");
         stage.setScene(scene);
         stage.show();
     }

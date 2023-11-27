@@ -4,6 +4,7 @@ import com.koschei.eums.entity.User;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileManager {
@@ -82,6 +83,18 @@ public class FileManager {
             System.out.println("Message saved successfully.");
         } catch (IOException e) {
             System.out.println("Error saving the message.");
+            throw e;
+        }
+    }
+
+    public static void flushUsersToFile(List<User> userList) throws IOException {
+        try (FileWriter writer = new FileWriter("user.txt")) {
+            for (User user : userList) {
+                writer.write(user.getName() + ", " + user.getPassword() + "\n");
+                writer.flush();
+            }
+        } catch (IOException e) {
+            System.out.println("FileManager: Error writing user information to file.");
             throw e;
         }
     }

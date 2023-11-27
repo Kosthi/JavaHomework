@@ -16,10 +16,15 @@ import java.util.ResourceBundle;
 public class MenuController implements Initializable {
 
     private static Stage stage; // Reference to the application stage
+
     @FXML
     private Button viewMessageButton;
+
     @FXML
     private Button logoutButton;
+
+    @FXML
+    private Button modifyPwdButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -28,6 +33,9 @@ public class MenuController implements Initializable {
         });
         logoutButton.setOnMouseClicked(actionEvent -> {
             loadLoginInterface();
+        });
+        modifyPwdButton.setOnMouseClicked(actionEvent -> {
+            loadPasswordInterface();
         });
     }
 
@@ -65,6 +73,23 @@ public class MenuController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("登陆");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadPasswordInterface() {
+        // Load and display the login interface
+        FXMLLoader loader = new FXMLLoader(EUMSApplication.class.getResource("password.fxml"));
+        Parent root;
+        try {
+            root = loader.load();
+            ModifyPassWordController modifyPassWordController = loader.getController();
+            modifyPassWordController.setStage(stage);
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("修改密码");
         } catch (IOException e) {
             e.printStackTrace();
         }
