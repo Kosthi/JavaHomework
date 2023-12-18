@@ -11,19 +11,25 @@ import java.util.stream.Stream;
 // 单例类
 public class TicketManager {
     private static TicketManager ticketManager = null;
-    private final String ticketFilePath = "ticketFile.txt"; // 定义文件路径
-    private final HashMap<String, HashSet<String>> ticketMap;
+    private static String ticketFilePath = "ticketFile.txt"; // 定义文件路径
+    private static HashMap<String, HashSet<String>> ticketMap;
 
     private TicketManager() {
         ticketMap = new HashMap<>();
         readTicketFromFile(); // 初始化时从文件中读取数据
     }
 
-    public synchronized static TicketManager getTicketManager() {
-        if (ticketManager != null) {
-            return ticketManager;
+    // 双重检查锁定 处理多线程单例
+    public static TicketManager getTicketManager() {
+        if (ticketManager == null) { // 第一次检查：不加锁
+            synchronized (TicketManager.class) {
+                if (ticketManager == null) { // 第二次检查：加锁后再检查
+                    System.out.println("初始化单例");
+                    ticketManager = new TicketManager();
+                }
+            }
         }
-        return new TicketManager();
+        return ticketManager;
     }
 
     // 从文件中读取电影票信息
@@ -53,7 +59,7 @@ public class TicketManager {
     }
 
     // 将电影票信息写入文件
-    private synchronized void writeTicketToFile() {
+    private void writeTicketToFile() {
         try {
             String data = ticketMap.entrySet().stream()
                     .map(entry -> entry.getKey() + "," + entry.getValue())
@@ -83,5 +89,11 @@ public class TicketManager {
 
     public synchronized boolean checkSeat(String movieName, String seatName) {
         return ticketMap.getOrDefault(movieName, new HashSet<>()).contains(seatName);
+    }
+
+    // only for test
+    public void clearStatus() {
+        ticketMap.clear();
+        writeTicketToFile();
     }
 }
