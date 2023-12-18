@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.controller.HelloController">
+    <VBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0"
+          AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+        <Label text="电影票售卖系统"/>
+
+        <HBox spacing="15.0">
+            <Label text="选择售票窗口:"/>
+            <ComboBox fx:id="windowComboBox" prefWidth="150.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="窗口1"/>
+                        <String fx:value="窗口2"/>
+                        <String fx:value="窗口3"/>
+                        <String fx:value="窗口4"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+        </HBox>
+
+        <HBox spacing="15.0">
+            <Label text="选择电影:"/>
+            <ComboBox fx:id="movieComboBox" prefWidth="150.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="哈利·波特"/>
+                        <String fx:value="拯救嫌疑人"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+        </HBox>
+
+        <HBox spacing="15.0">
+            <Label text="选择座位:"/>
+            <ComboBox fx:id="seatComboBox" prefWidth="150.0"/>
+        </HBox>
+
+        <HBox spacing="15.0">
+            <Button text="购买票" fx:id="buyButton" minWidth="90.0"/>
+            <Button text="退票" fx:id="refundButton" minWidth="90.0"/>
+        </HBox>
+
+        <TextArea fx:id="outputTextArea" editable="false" prefHeight="200.0" prefWidth="200.0"/>
+    </VBox>
+</AnchorPane>
