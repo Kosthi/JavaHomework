@@ -21,11 +21,13 @@ class Tester {
         Room210405225 room1 = new Room210405225("Single", "101", "2023-12-01", "2023-12-05");
         Room210405225 room2 = new Room210405225("Double", "201", "2023-12-02", "2023-12-06");
         Room210405225 room3 = new Room210405225("Double", "205", "2023-12-03", "2023-12-04");
+        Room210405225 room4 = new Room210405225("Double", "205", "2023-12-03", "2023-12-04");
 
         // 将房间添加到HashMap中
         roomMap.computeIfAbsent(room1.getRoomType(), k -> new HashSet<>()).add(room1);
         roomMap.computeIfAbsent(room2.getRoomType(), k -> new HashSet<>()).add(room2);
         roomMap.get(room3.getRoomType()).add(room3);
+        roomMap.computeIfAbsent(room4.getRoomType(), k -> new HashSet<>()).add(room4);
 
         // 输出更新后的信息
         System.out.println("Updated HashMap (Room Management): " + roomMap);

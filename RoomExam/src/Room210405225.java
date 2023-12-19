@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 class Room210405225 {
 
     // 房间类型
@@ -39,5 +41,28 @@ class Room210405225 {
 
     public String getCheckInDate() {
         return checkInDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room210405225 that = (Room210405225) o;
+        return Objects.equals(roomType, that.roomType) && Objects.equals(roomNumber, that.roomNumber) && Objects.equals(reservationDate, that.reservationDate) && Objects.equals(checkInDate, that.checkInDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(roomType, roomNumber, reservationDate, checkInDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Room210405225{" +
+                "roomType='" + roomType + '\'' +
+                ", roomNumber='" + roomNumber + '\'' +
+                ", reservationDate='" + reservationDate + '\'' +
+                ", checkInDate='" + checkInDate + '\'' +
+                '}';
     }
 }
