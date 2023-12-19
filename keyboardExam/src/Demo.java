@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Demo {
 
@@ -39,7 +36,9 @@ public class Demo {
             System.out.println("Brand: " + brand);
             List<Keyboard_210405317> keyboardsByBrand = brandMap.get(brand);
             // 使用自定义排序类
-            keyboardsByBrand.sort(new KeyboardComparator());
+            // keyboardsByBrand.sort(new KeyboardComparator());
+            // keyboardsByBrand.sort();
+            Collections.sort(keyboardsByBrand);
             for (Keyboard_210405317 keyboard : keyboardsByBrand) {
                 System.out.println("ID: " + keyboard.getId() + " Capacity: " + keyboard.getCapacity() + " Price: " + keyboard.getPrice());
             }
